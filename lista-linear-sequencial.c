@@ -19,20 +19,28 @@ int tamanho(LISTA *l);
 void exibirLista(LISTA *l);
 int buscaSequencial(LISTA *l, TIPOCHAVE ch);
 boolean inserirElemLista(LISTA *l, REGISTRO reg, int i);
+boolean excluirElemLista(LISTA *l, TIPOCHAVE ch);
 
 int main() {
   LISTA l;
-  REGISTRO r1;
+  REGISTRO r1,r2,r3;
 
   inicializarLista(&l);
 
   r1.chave = 20;
+  r2.chave = 21;
+  r3.chave = 22;
 
   inserirElemLista(&l, r1, 0);
+  inserirElemLista(&l, r2, 1);
+  inserirElemLista(&l, r3, 0);
 
   printf("\n\n tamanho da lista: %d\n\n", tamanho(&l));
-
-
+  exibirLista(&l);
+  printf("\n %d",buscaSequencial(&l, 23));
+  printf("\n %d",buscaSequencial(&l, 21));
+  excluirElemLista(&l, 20);
+  printf("\n\n tamanho da lista: %d\n\n", tamanho(&l));
   exibirLista(&l);
 
   return 0;
@@ -48,7 +56,7 @@ int tamanho(LISTA *l) {
 
 void exibirLista(LISTA *l) {
   int i, fim = tamanho(l);
-  printf("Lista: \" ");
+  printf(" Lista: \" ");
   for(i = 0; i < fim; i++) 
     printf("%d%c", l->A[i].chave , (i< fim-1)? ',':' ');
   printf("\"\n");
@@ -70,5 +78,14 @@ boolean inserirElemLista(LISTA *l, REGISTRO reg, int i) {
   for(j = l->nroElem; j > i; j--) l->A[j] = l->A[j-1];
   l->A[j] = reg;
   l->nroElem++;
+  return true;
+}
+
+boolean excluirElemLista(LISTA *l, TIPOCHAVE ch) {
+  int pos, j;
+  if(pos = buscaSequencial(l, ch) == -1) return false;
+  for(j = pos; j < l->nroElem-1; j++) 
+    l->A[j] = l->A[j+1];
+  l->nroElem--;
   return true;
 }

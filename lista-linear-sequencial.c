@@ -18,11 +18,17 @@ void inicializarLista(LISTA *l);
 int tamanho(LISTA *l);
 void exibirLista(LISTA *l);
 int buscaSequencial(LISTA *l, TIPOCHAVE ch);
+boolean inserirElemLista(LISTA *l, REGISTRO reg, int i);
 
 int main() {
   LISTA l;
+  REGISTRO r1;
 
   inicializarLista(&l);
+
+  r1.chave = 20;
+
+  inserirElemLista(&l, r1, 0);
 
   printf("\n\n tamanho da lista: %d\n\n", tamanho(&l));
 
@@ -56,4 +62,13 @@ int buscaSequencial(LISTA *l, TIPOCHAVE ch) {
     i++;
   }
   return -1;
+}
+
+boolean inserirElemLista(LISTA *l, REGISTRO reg, int i) {
+  int j;
+  if ((l->nroElem == MAX) || (i < 0) || (i > l->nroElem)) return false;
+  for(j = l->nroElem; j > i; j--) l->A[j] = l->A[j-1];
+  l->A[j] = reg;
+  l->nroElem++;
+  return true;
 }

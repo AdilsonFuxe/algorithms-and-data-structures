@@ -20,6 +20,7 @@ void exibirLista(LISTA *l);
 int buscaSequencial(LISTA *l, TIPOCHAVE ch);
 boolean inserirElemLista(LISTA *l, REGISTRO reg, int i);
 boolean excluirElemLista(LISTA *l, TIPOCHAVE ch);
+void reinicializaLista(LISTA *l);
 
 int main() {
   LISTA l;
@@ -88,4 +89,8 @@ boolean excluirElemLista(LISTA *l, TIPOCHAVE ch) {
     l->A[j] = l->A[j+1];
   l->nroElem--;
   return true;
+}
+
+void reinicializaLista(LISTA *l) {
+  l->nroElem = 0;
 }

@@ -13,16 +13,23 @@ typedef struct {
 } LISTA;
 
 void inicializarLista(LISTA *l);
+int tamanho(LISTA *l);
+
 
 int main() {
   LISTA l;
 
   inicializarLista(&l);
 
+  printf("\n\n tamanho da lista: %d\n\n", tamanho(&l));
 
   return 0;
 }
 
 void inicializarLista(LISTA *l) {
   l->nroElem = 0;
+}
+
+int tamanho(LISTA *l) {
+  return l->nroElem;
 }

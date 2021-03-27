@@ -1,6 +1,8 @@
 #include <stdio.h>
 #define MAX 50
 
+typedef enum { false = 0, true = 1 } boolean;
+
 typedef int TIPOCHAVE;
 
 typedef struct {

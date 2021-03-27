@@ -15,7 +15,7 @@ typedef struct {
 void inicializarLista(LISTA *l);
 int tamanho(LISTA *l);
 void exibirLista(LISTA *l);
-
+int buscaSequencial(LISTA *l, TIPOCHAVE ch);
 
 int main() {
   LISTA l;
@@ -44,4 +44,14 @@ void exibirLista(LISTA *l) {
   for(i = 0; i < fim; i++) 
     printf("%d%c", l->A[i].chave , (i< fim-1)? ',':' ');
   printf("\"\n");
+}
+
+int buscaSequencial(LISTA *l, TIPOCHAVE ch) {
+  int i = 0;
+
+  while(i < l->nroElem) {
+    if(ch == l->A[i].chave) return i;
+    i++;
+  }
+  return -1;
 }

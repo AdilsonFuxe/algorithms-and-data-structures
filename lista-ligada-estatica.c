@@ -40,7 +40,34 @@ void reinicializarLista(LISTA *l);
 
 int main()
 {
+  LISTA l;
+  REGISTRO r1, r2, r3, r4, r5;
 
+  r1.chave = 22;
+  r2.chave = 11;
+  r3.chave = 24;
+  r4.chave = 18;
+  r5.chave = 5;
+
+  inicializarLista(&l);
+
+  inserirElemListaOrd(&l, r1);
+  inserirElemListaOrd(&l, r2);
+  inserirElemListaOrd(&l, r3);
+  inserirElemListaOrd(&l, r4);
+  inserirElemListaOrd(&l, r5);
+
+  exibirLista(&l);
+  printf("Tamanho: %d\n", tamanho(&l));
+  printf("%d\n", buscaSequencialOrd(&l, 11));
+  printf("%d\n", buscaSequencialOrd(&l, 30));
+  excluirElemList(&l, 11);
+  printf("%d\n", buscaSequencialOrd(&l, 11));
+  inserirElemListaOrd(&l, r2);
+  printf("%d\n", buscaSequencialOrd(&l, 11));
+  reinicializarLista(&l);
+  exibirLista(&l);
+  printf("Tamanho: %d\n", tamanho(&l));
   return 0;
 }
 

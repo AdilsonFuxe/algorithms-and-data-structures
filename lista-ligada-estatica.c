@@ -33,6 +33,7 @@ int tamanho(LISTA *l);
 void exibirLista(LISTA *l);
 int buscaSequencialOrd(LISTA *l, TIPOCHAVE ch);
 int obterNo(LISTA *l);
+boolean inserirElemListaOrd(LISTA *l, REGISTRO reg);
 
 int main()
 {
@@ -94,4 +95,38 @@ int obterNo(LISTA *l)
   if (resultado != INVALIDO)
     l->dispo = l->A[l->dispo].prox;
   return resultado;
+}
+
+boolean inserirElemListaOrd(LISTA *l, REGISTRO reg)
+{
+  if (l->dispo == INVALIDO)
+    return false;
+
+  int ant = INVALIDO;
+  int i = l->inicio;
+  TIPOCHAVE ch = reg.chave;
+  while ((i != INVALIDO) && (l->A[i].reg.chave < ch))
+  {
+    ant = i;
+    i = l->A[i].prox;
+  }
+
+  if (i != INVALIDO && l->A[i].reg.chave == ch)
+    return false;
+
+  i = obterNo(l);
+  l->A[i].reg = reg;
+
+  if (ant == INVALIDO)
+  {
+    l->A[i].prox = l->inicio;
+    l->inicio = i;
+  }
+  else
+  {
+    l->A[i].prox = l->A[ant].prox;
+    l->A[ant].prox = i;
+  }
+
+  return true;
 }

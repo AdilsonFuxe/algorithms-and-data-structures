@@ -34,7 +34,8 @@ void exibirLista(LISTA *l);
 int buscaSequencialOrd(LISTA *l, TIPOCHAVE ch);
 int obterNo(LISTA *l);
 boolean inserirElemListaOrd(LISTA *l, REGISTRO reg);
-
+boolean excluirElemList(LISTA *l, TIPOCHAVE ch);
+void devolverNo(LISTA *l, int i);
 int main()
 {
 
@@ -128,5 +129,30 @@ boolean inserirElemListaOrd(LISTA *l, REGISTRO reg)
     l->A[ant].prox = i;
   }
 
+  return true;
+}
+
+void devolverNo(LISTA *l, int i)
+{
+  l->A[i].prox = l->dispo;
+  l->dispo = i;
+}
+
+boolean excluirElemList(LISTA *l, TIPOCHAVE ch)
+{
+  int ant = INVALIDO;
+  int i = l->inicio;
+  while ((i != INVALIDO) && (l->A[i].reg.chave < ch))
+  {
+    ant = i;
+    i = l->A[i].prox;
+  }
+  if (i == INVALIDO || l->A[i].reg.chave != ch)
+    return false;
+  if (ant == INVALIDO)
+    l->inicio = l->A[l->inicio].prox;
+  else
+    l->A[ant].prox = l->A[i].prox;
+  devolverNo(l, i);
   return true;
 }

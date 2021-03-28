@@ -26,6 +26,8 @@ void inicializarLista(LISTA *l);
 int tamanho(LISTA *l);
 void exibirLista(LISTA *l);
 int buscaSequencialOrd(LISTA *l, TIPOCHAVE ch);
+int obterNo(LISTA *l);
+
 int main()
 {
 
@@ -77,4 +79,13 @@ int buscaSequencialOrd(LISTA *l, TIPOCHAVE ch)
   if (i != INVALIDO && l->A[i].reg.chave == ch)
     return i;
   return INVALIDO;
+}
+
+int obterNo(LISTA *l)
+{
+  int resultado = l->dispo;
+
+  if (resultado != INVALIDO)
+    l->dispo = l->A[l->dispo].prox;
+  return resultado;
 }

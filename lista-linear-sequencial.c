@@ -28,6 +28,7 @@ boolean inserirElemLista(LISTA *l, REGISTRO reg, int i);
 boolean excluirElemLista(LISTA *l, TIPOCHAVE ch);
 void reinicializaLista(LISTA *l);
 int buscaSentinela(LISTA *l, TIPOCHAVE ch);
+boolean inserirElemListaOrd(LISTA *l, REGISTRO reg);
 
 int main()
 {
@@ -124,4 +125,18 @@ int buscaSentinela(LISTA *l, TIPOCHAVE ch)
   if (i == l->nroElem)
     return -1;
   return i;
+}
+
+boolean inserirElemListaOrd(LISTA *l, REGISTRO reg)
+{
+  if (l->nroElem >= MAX)
+    return false;
+  int pos = l->nroElem;
+  while (pos > 0 && l->A[pos - 1].chave > reg.chave)
+  {
+    l->A[pos] = l->A[pos - 1];
+    pos--;
+  }
+  l->A[pos] = reg;
+  l->nroElem++;
 }

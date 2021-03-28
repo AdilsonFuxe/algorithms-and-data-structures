@@ -4,6 +4,12 @@
 
 typedef int TIPOCHAVE;
 
+typedef enum
+{
+  false = 0,
+  true = 1
+} boolean;
+
 typedef struct
 {
   TIPOCHAVE chave;

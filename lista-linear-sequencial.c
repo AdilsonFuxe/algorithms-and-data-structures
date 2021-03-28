@@ -29,6 +29,7 @@ boolean excluirElemLista(LISTA *l, TIPOCHAVE ch);
 void reinicializaLista(LISTA *l);
 int buscaSentinela(LISTA *l, TIPOCHAVE ch);
 boolean inserirElemListaOrd(LISTA *l, REGISTRO reg);
+int buscaBinaria(LISTA *l, TIPOCHAVE ch);
 
 int main()
 {
@@ -139,4 +140,23 @@ boolean inserirElemListaOrd(LISTA *l, REGISTRO reg)
   }
   l->A[pos] = reg;
   l->nroElem++;
+}
+
+int buscaBinaria(LISTA *l, TIPOCHAVE ch)
+{
+  int esq = 1, dir = l->nroElem - 1, meio;
+  while (esq <= dir)
+  {
+    meio = ((esq + dir) / 2);
+    if (l->A[meio].chave == ch)
+      return meio;
+    else
+    {
+      if (l->A[meio].chave < ch)
+        esq = meio + 1;
+      else
+        dir = meio - 1;
+    }
+  }
+  return -1;
 }

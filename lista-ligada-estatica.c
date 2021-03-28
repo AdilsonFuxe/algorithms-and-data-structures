@@ -22,8 +22,20 @@ typedef struct
   int dispo;
 } LISTA;
 
+void inicializarLista(LISTA *l);
+
 int main()
 {
 
   return 0;
+}
+
+void inicializarLista(LISTA *l)
+{
+  int i;
+  for (i = 0; i < MAX - 1; i++)
+    l->A[i].prox = i + 1;
+  l->A[MAX - 1].prox = INVALIDO;
+  l->inicio = INVALIDO;
+  l->dispo = 0;
 }

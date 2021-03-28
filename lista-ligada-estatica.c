@@ -23,6 +23,7 @@ typedef struct
 } LISTA;
 
 void inicializarLista(LISTA *l);
+int tamanho(LISTA *l);
 
 int main()
 {
@@ -38,4 +39,17 @@ void inicializarLista(LISTA *l)
   l->A[MAX - 1].prox = INVALIDO;
   l->inicio = INVALIDO;
   l->dispo = 0;
+}
+
+int tamanho(LISTA *l)
+{
+  int i = l->inicio;
+  int count = 0;
+
+  while (i != INVALIDO)
+  {
+    count++;
+    i = l->A[i].prox;
+  }
+  return count;
 }

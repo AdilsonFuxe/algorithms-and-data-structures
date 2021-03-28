@@ -36,6 +36,8 @@ int obterNo(LISTA *l);
 boolean inserirElemListaOrd(LISTA *l, REGISTRO reg);
 boolean excluirElemList(LISTA *l, TIPOCHAVE ch);
 void devolverNo(LISTA *l, int i);
+void reinicializarLista(LISTA *l);
+
 int main()
 {
 
@@ -155,4 +157,9 @@ boolean excluirElemList(LISTA *l, TIPOCHAVE ch)
     l->A[ant].prox = l->A[i].prox;
   devolverNo(l, i);
   return true;
+}
+
+void reinicializarLista(LISTA *l)
+{
+  inicializarLista(l);
 }

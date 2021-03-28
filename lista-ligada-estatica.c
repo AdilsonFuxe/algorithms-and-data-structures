@@ -25,7 +25,7 @@ typedef struct
 void inicializarLista(LISTA *l);
 int tamanho(LISTA *l);
 void exibirLista(LISTA *l);
-
+int buscaSequencialOrd(LISTA *l, TIPOCHAVE ch);
 int main()
 {
 
@@ -66,4 +66,15 @@ void exibirLista(LISTA *l)
     i = l->A[i].prox;
   }
   printf("\"\n");
+}
+
+int buscaSequencialOrd(LISTA *l, TIPOCHAVE ch)
+{
+  int i = l->inicio;
+
+  while (i != INVALIDO && l->A[i].reg.chave < ch)
+    i = l->A[i].prox;
+  if (i != INVALIDO && l->A[i].reg.chave == ch)
+    return i;
+  return INVALIDO;
 }

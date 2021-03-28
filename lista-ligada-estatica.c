@@ -24,6 +24,7 @@ typedef struct
 
 void inicializarLista(LISTA *l);
 int tamanho(LISTA *l);
+void exibirLista(LISTA *l);
 
 int main()
 {
@@ -52,4 +53,17 @@ int tamanho(LISTA *l)
     i = l->A[i].prox;
   }
   return count;
+}
+
+void exibirLista(LISTA *l)
+{
+  int i = l->inicio;
+
+  printf("Lista: \" ");
+  while (i != INVALIDO)
+  {
+    printf("%d ", l->A[i].reg.chave);
+    i = l->A[i].prox;
+  }
+  printf("\"\n");
 }

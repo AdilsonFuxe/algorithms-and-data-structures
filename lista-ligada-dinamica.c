@@ -29,6 +29,7 @@ typedef struct
 
 void inicializarLista(LISTA *l);
 int tamanho(LISTA *l);
+void exibirLista(LISTA *l);
 
 int main()
 {
@@ -56,4 +57,17 @@ int tamanho(LISTA *l)
     end = end->prox;
   }
   return tam;
+}
+
+void exibirLista(LISTA *l)
+{
+  PONT end = l->inicio;
+
+  printf("Lista: \" ");
+  while (end != NULL)
+  {
+    printf("%d ", end->reg.chave);
+    end = end->prox;
+  }
+  printf("\"\n");
 }

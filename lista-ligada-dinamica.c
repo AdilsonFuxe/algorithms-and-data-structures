@@ -31,6 +31,7 @@ void inicializarLista(LISTA *l);
 int tamanho(LISTA *l);
 void exibirLista(LISTA *l);
 PONT buscaSequencial(LISTA *l, TIPOCHAVE ch);
+PONT buscaSeqOrd(LISTA *l, TIPOCHAVE ch);
 
 int main()
 {
@@ -83,5 +84,16 @@ PONT buscaSequencial(LISTA *l, TIPOCHAVE ch)
       return pos;
     pos = pos->prox;
   }
+  return NULL;
+}
+
+PONT buscaSeqOrd(LISTA *l, TIPOCHAVE ch)
+{
+  PONT pos = l->inicio;
+
+  while (pos != NULL && pos->reg.chave < ch)
+    pos = pos->prox;
+  if (pos != NULL && pos->reg.chave == ch)
+    return pos;
   return NULL;
 }

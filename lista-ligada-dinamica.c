@@ -27,8 +27,19 @@ typedef struct
   PONT inicio;
 } LISTA;
 
+void inicializarLista(LISTA *l);
+
 int main()
 {
 
+  LISTA l;
+
+  inicializarLista(&l);
+
   return 0;
+}
+
+void inicializarLista(LISTA *l)
+{
+  l->inicio = NULL;
 }

@@ -28,6 +28,7 @@ typedef struct
 } LISTA;
 
 void inicializarLista(LISTA *l);
+int tamanho(LISTA *l);
 
 int main()
 {
@@ -35,6 +36,7 @@ int main()
   LISTA l;
 
   inicializarLista(&l);
+  printf("Tamanho: %d\n", tamanho(&l));
 
   return 0;
 }
@@ -42,4 +44,16 @@ int main()
 void inicializarLista(LISTA *l)
 {
   l->inicio = NULL;
+}
+
+int tamanho(LISTA *l)
+{
+  PONT end = l->inicio;
+  int tam = 0;
+  while (end != NULL)
+  {
+    tam++;
+    end = end->prox;
+  }
+  return tam;
 }

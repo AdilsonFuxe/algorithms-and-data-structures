@@ -30,6 +30,7 @@ typedef struct
 void inicializarLista(LISTA *l);
 int tamanho(LISTA *l);
 void exibirLista(LISTA *l);
+PONT buscaSequencial(LISTA *l, TIPOCHAVE ch);
 
 int main()
 {
@@ -70,4 +71,17 @@ void exibirLista(LISTA *l)
     end = end->prox;
   }
   printf("\"\n");
+}
+
+PONT buscaSequencial(LISTA *l, TIPOCHAVE ch)
+{
+  PONT pos = l->inicio;
+
+  while (pos != NULL)
+  {
+    if (pos->reg.chave != ch)
+      return pos;
+    pos = pos->prox;
+  }
+  return NULL;
 }

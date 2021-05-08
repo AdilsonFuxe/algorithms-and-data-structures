@@ -34,6 +34,7 @@ PONT buscaSequencial(LISTA *l, TIPOCHAVE ch);
 PONT buscaSeqOrd(LISTA *l, TIPOCHAVE ch);
 PONT buscaSequencialExc(LISTA *l, TIPOCHAVE ch, PONT *ant);
 boolean inserirElemListaOrd(LISTA *l, REGISTRO reg);
+boolean excluirElemLista(LISTA *l, TIPOCHAVE ch);
 
 int main()
 {
@@ -133,5 +134,19 @@ boolean inserirElemListaOrd(LISTA *l, REGISTRO reg)
     i->prox = ant->prox;
     ant->prox = i;
   }
+  return true;
+}
+
+boolean excluirElemLista(LISTA *l, TIPOCHAVE ch)
+{
+  PONT ant, i;
+  i = buscaSequencialExc(l, ch, &ant);
+  if (i == NULL)
+    return false;
+  if (ant == NULL)
+    l->inicio = i->prox;
+  else
+    ant->prox = i->prox;
+  free(i);
   return true;
 }

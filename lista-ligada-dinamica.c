@@ -32,6 +32,8 @@ int tamanho(LISTA *l);
 void exibirLista(LISTA *l);
 PONT buscaSequencial(LISTA *l, TIPOCHAVE ch);
 PONT buscaSeqOrd(LISTA *l, TIPOCHAVE ch);
+PONT buscaSequencialExc(LISTA *l, TIPOCHAVE ch, PONT *ant);
+boolean inserirElemListaOrd(LISTA *l, REGISTRO reg);
 
 int main()
 {
@@ -96,4 +98,40 @@ PONT buscaSeqOrd(LISTA *l, TIPOCHAVE ch)
   if (pos != NULL && pos->reg.chave == ch)
     return pos;
   return NULL;
+}
+
+PONT buscaSequencialExc(LISTA *l, TIPOCHAVE ch, PONT *ant)
+{
+  *ant = NULL;
+  PONT atual = l->inicio;
+  while ((atual != NULL) && (atual->reg.chave < ch))
+  {
+    *ant = atual;
+    atual = atual->prox;
+  }
+
+  if ((atual != NULL) && (atual->reg.chave == ch))
+    return atual;
+  return NULL;
+}
+
+boolean inserirElemListaOrd(LISTA *l, REGISTRO reg)
+{
+  PONT ant, i;
+  i = buscaSequencialExc(l, reg.chave, &ant);
+  if (i != NULL)
+    return false;
+  i = (PONT)malloc(sizeof(ELEMENTO));
+  i->reg = reg;
+  if (ant == NULL)
+  {
+    i->prox = l->inicio;
+    l->inicio = i;
+  }
+  else
+  {
+    i->prox = ant->prox;
+    ant->prox = i;
+  }
+  return true;
 }

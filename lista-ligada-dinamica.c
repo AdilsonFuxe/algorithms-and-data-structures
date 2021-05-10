@@ -36,6 +36,7 @@ PONT buscaSequencialExc(LISTA *l, TIPOCHAVE ch, PONT *ant);
 boolean inserirElemListaOrd(LISTA *l, REGISTRO reg);
 boolean excluirElemLista(LISTA *l, TIPOCHAVE ch);
 void reinicialiizarLLista(LISTA *l);
+void inverterLista(LISTA *l);
 
 int main()
 {
@@ -43,6 +44,20 @@ int main()
   LISTA l;
 
   inicializarLista(&l);
+
+  REGISTRO r1, r2, r3;
+  r1.chave = 10;
+  r2.chave = 11;
+  r3.chave = 9;
+
+  inserirElemListaOrd(&l, r1);
+  inserirElemListaOrd(&l, r2);
+  inserirElemListaOrd(&l, r3);
+
+  exibirLista(&l);
+  inverterLista(&l);
+  exibirLista(&l);
+
   printf("Tamanho: %d\n", tamanho(&l));
 
   return 0;
@@ -162,4 +177,21 @@ void reinicialiizarLLista(LISTA *l)
     free(apagar);
   }
   l->inicio = NULL;
+}
+
+void inverterLista(LISTA *l)
+{
+  PONT end = l->inicio;
+  PONT i = l->inicio->prox;
+
+  while (i)
+  {
+    PONT aux = i;
+    i = i->prox;
+
+    aux->prox = l->inicio;
+    l->inicio = aux;
+  }
+
+  end->prox = NULL;
 }

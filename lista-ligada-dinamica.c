@@ -37,6 +37,7 @@ boolean inserirElemListaOrd(LISTA *l, REGISTRO reg);
 boolean excluirElemLista(LISTA *l, TIPOCHAVE ch);
 void reinicialiizarLLista(LISTA *l);
 void inverterLista(LISTA *l);
+void listConcact(LISTA *l1, LISTA *l2);
 
 int main()
 {
@@ -198,4 +199,18 @@ void inverterLista(LISTA *l)
   }
 
   end->prox = NULL;
+}
+
+void listConcact(LISTA *l1, LISTA *l2)
+{
+  PONT i = l1->inicio;
+  PONT antEnd = NULL;
+
+  while (i)
+  {
+    antEnd = i;
+    i = i->prox;
+  }
+
+  antEnd->prox = l2->inicio;
 }

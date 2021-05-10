@@ -60,6 +60,10 @@ int main()
 
   printf("Tamanho: %d\n", tamanho(&l));
 
+  reinicialiizarLLista(&l);
+  exibirLista(&l);
+  printf("Tamanho: %d\n", tamanho(&l));
+
   return 0;
 }
 

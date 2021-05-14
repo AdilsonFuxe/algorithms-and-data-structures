@@ -32,7 +32,7 @@ void inicializarPilhaDupla(PILHADUPLA *p);
 int tamanhoPilhaDupla(PILHADUPLA *p);
 void exibirPilha(PILHADUPLA *p, TIPOPILHA tipo);
 boolean inserirElementoPilha(PILHADUPLA *p, REGISTRO reg, TIPOPILHA tipo);
-
+boolean excluirElementoPilha(PILHADUPLA *p, TIPOPILHA tipo);
 int main()
 {
 
@@ -79,4 +79,20 @@ boolean inserirElementoPilha(PILHADUPLA *p, REGISTRO reg, TIPOPILHA tipo)
     p->A[p->topo2] = reg;
   }
   return true;
+}
+
+boolean excluirElementoPilha(PILHADUPLA *p, TIPOPILHA tipo)
+{
+  if (tipo == pilha1)
+  {
+    if (p->topo1 == -1)
+      return false;
+    p->topo1 = p->topo1 - 1;
+  }
+  else
+  {
+    if (p->topo2 == MAX)
+      return false;
+    p->topo2 = p->topo2 + 1;
+  }
 }

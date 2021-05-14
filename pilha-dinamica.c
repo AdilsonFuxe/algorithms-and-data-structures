@@ -27,8 +27,15 @@ typedef struct
   PONT topo;
 } PILHA;
 
+void inicializarPilga(PILHA *p);
+
 int main()
 {
 
   return 0;
+}
+
+void inicializarPilga(PILHA *p)
+{
+  p->topo = NULL;
 }

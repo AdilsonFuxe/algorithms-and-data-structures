@@ -34,6 +34,7 @@ PONT buscanSentinela(LISTA *l, TIPOCHAVE ch);
 PONT buscanSentinelaOrd(LISTA *l, TIPOCHAVE ch);
 PONT buscaSeqExc(LISTA *l, TIPOCHAVE ch, PONT *ant);
 boolean inserirElemListaOrd(LISTA *l, REGISTRO reg);
+boolean excluirElemLista(LISTA *l, TIPOCHAVE ch);
 
 int main()
 {
@@ -117,5 +118,16 @@ boolean inserirElemListaOrd(LISTA *l, REGISTRO reg)
   i->reg = reg;
   i->prox = ant->prox;
   ant->prox = i;
+  return true;
+}
+
+boolean excluirElemLista(LISTA *l, TIPOCHAVE ch)
+{
+  PONT ant, i;
+  i = buscaSeqExc(l, ch, &ant);
+  if (i == NULL)
+    return false;
+  ant->prox = i->prox;
+  free(i);
   return true;
 }

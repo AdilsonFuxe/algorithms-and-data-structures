@@ -28,6 +28,7 @@ typedef struct
 
 void inicializarFila(FILA *f);
 int tamanho(FILA *f);
+void exibirElemento(FILA *f);
 
 int main()
 {
@@ -51,4 +52,15 @@ int tamanho(FILA *f)
     end = end->prox;
   }
   return tam;
+}
+void exibirElemento(FILA *f)
+{
+  PONT end = f->inicio;
+  printf("Fila: \" ");
+  while (end != NULL)
+  {
+    printf("%d ", end->reg.chave);
+    end = end->prox;
+  }
+  printf("\"\n");
 }

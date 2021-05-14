@@ -33,6 +33,7 @@ void exibirDequeInicio(DEQUE *d);
 void exibirDequeFim(DEQUE *d);
 boolean inserirFim(DEQUE *d, REGISTRO reg);
 boolean excluirElemDequeInicio(DEQUE *d);
+void reiniciarLista(DEQUE *d);
 
 int main()
 {
@@ -120,4 +121,17 @@ boolean excluirElemDequeInicio(DEQUE *d)
   apagar->prox->ant = d->cabeca;
   free(apagar);
   return true;
+}
+
+void reiniciarLista(DEQUE *d)
+{
+  PONT end = d->cabeca->prox;
+
+  while (end != d->cabeca)
+  {
+    PONT apagar = end;
+    end = end->prox;
+    free(apagar);
+  }
+  inicializarDeque(d);
 }

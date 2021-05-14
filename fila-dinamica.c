@@ -30,6 +30,7 @@ void inicializarFila(FILA *f);
 int tamanho(FILA *f);
 void exibirElemento(FILA *f);
 boolean inserirElemento(FILA *f, REGISTRO reg);
+boolean excluirDaFIla(FILA *f);
 
 int main()
 {
@@ -76,5 +77,17 @@ boolean inserirElemento(FILA *f, REGISTRO reg)
   else
     f->fim->prox = novo;
   f->fim = novo;
+  return true;
+}
+
+boolean excluirDaFIla(FILA *f)
+{
+  if (f->inicio == NULL)
+    return false;
+  PONT apagar = f->inicio;
+  f->inicio = f->inicio->prox;
+  free(apagar);
+  if (f->inicio == NULL)
+    f->fim = NULL;
   return true;
 }

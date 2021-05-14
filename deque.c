@@ -20,8 +20,17 @@ typedef struct
   PONT cabeca;
 } DEQUE;
 
+void inicializarDeque(DEQUE *d);
+
 int main()
 {
 
   return 0;
+}
+
+void inicializarDeque(DEQUE *d)
+{
+  d->cabeca = (PONT)malloc(sizeof(ELEMENTO));
+  d->cabeca->prox = d->cabeca;
+  d->cabeca->ant = d->cabeca;
 }

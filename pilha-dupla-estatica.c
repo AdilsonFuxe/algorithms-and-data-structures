@@ -31,6 +31,7 @@ typedef struct
 void inicializarPilhaDupla(PILHADUPLA *p);
 int tamanhoPilhaDupla(PILHADUPLA *p);
 void exibirPilha(PILHADUPLA *p, TIPOPILHA tipo);
+boolean inserirElementoPilha(PILHADUPLA *p, REGISTRO reg, TIPOPILHA tipo);
 
 int main()
 {
@@ -60,4 +61,21 @@ void exibirPilha(PILHADUPLA *p, TIPOPILHA tipo)
   else
     for (i = p->topo2; i < MAX; i++)
       printf("%d ", p->A[i].chave);
+}
+
+boolean inserirElementoPilha(PILHADUPLA *p, REGISTRO reg, TIPOPILHA tipo)
+{
+  if (p->topo1 + 1 == p->topo2)
+    return false;
+
+  if (tipo == pilha1)
+  {
+    p->topo1 = p->topo1 + 1;
+    p->A[p->topo1] = reg;
+  }
+  else
+  {
+    p->topo2 = p->topo2 - 1;
+    p->A[p->topo2] = reg;
+  }
 }

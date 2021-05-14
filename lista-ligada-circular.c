@@ -33,6 +33,7 @@ void exibirLista(LISTA *l);
 PONT buscanSentinela(LISTA *l, TIPOCHAVE ch);
 PONT buscanSentinelaOrd(LISTA *l, TIPOCHAVE ch);
 PONT buscaSeqExc(LISTA *l, TIPOCHAVE ch, PONT *ant);
+boolean inserirElemListaOrd(LISTA *l, REGISTRO reg);
 
 int main()
 {
@@ -95,6 +96,7 @@ PONT buscaSeqExc(LISTA *l, TIPOCHAVE ch, PONT *ant)
 {
   *ant = l->cabeca;
   PONT atual = l->cabeca->prox;
+  l->cabeca->reg.chave = ch;
   while (atual->reg.chave < ch)
   {
     *ant = atual;
@@ -103,4 +105,17 @@ PONT buscaSeqExc(LISTA *l, TIPOCHAVE ch, PONT *ant)
 
   if (atual != l->cabeca && atual->reg.chave == ch)
     return atual;
+}
+
+boolean inserirElemListaOrd(LISTA *l, REGISTRO reg)
+{
+  PONT ant, i;
+  i = buscaSeqExc(l, reg.chave, &ant);
+  if (i != NULL)
+    return false;
+  i = (PONT)malloc(sizeof(ELEMENTO));
+  i->reg = reg;
+  i->prox = ant->prox;
+  ant->prox = i;
+  return true;
 }

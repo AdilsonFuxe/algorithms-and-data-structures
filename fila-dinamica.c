@@ -31,6 +31,7 @@ int tamanho(FILA *f);
 void exibirElemento(FILA *f);
 boolean inserirElemento(FILA *f, REGISTRO reg);
 boolean excluirDaFIla(FILA *f);
+boolean reincializarFila(FILA *f);
 
 int main()
 {
@@ -90,4 +91,17 @@ boolean excluirDaFIla(FILA *f)
   if (f->inicio == NULL)
     f->fim = NULL;
   return true;
+}
+
+boolean reincializarFila(FILA *f)
+{
+  PONT end = f->inicio;
+
+  while (end != NULL)
+  {
+    PONT aux = end;
+    end = end->prox;
+    free(aux);
+  }
+  inicializarFila(f);
 }

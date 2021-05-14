@@ -27,7 +27,15 @@ typedef struct
   PONT cabeca;
 } LISTA;
 
+void inicializarLista(LISTA *l);
+
 int main()
 {
   return 0;
+}
+
+void inicializarLista(LISTA *l)
+{
+  l->cabeca = (PONT)malloc(sizeof(ELEMENTO));
+  l->cabeca->prox = l->cabeca;
 }

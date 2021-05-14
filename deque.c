@@ -3,6 +3,12 @@
 
 typedef int TIPOCHAVE;
 
+typedef enum
+{
+  false = 0,
+  true = 1
+} boolean;
+
 typedef struct
 {
   TIPOCHAVE chave;
@@ -25,6 +31,7 @@ int tamanho(DEQUE *d);
 int tamanho2(DEQUE *d);
 void exibirDequeInicio(DEQUE *d);
 void exibirDequeFim(DEQUE *d);
+boolean inserirFim(DEQUE *d, REGISTRO reg);
 
 int main()
 {
@@ -88,4 +95,17 @@ void exibirDequeFim(DEQUE *d)
     end = end->ant;
   }
   printf("\"\n");
+}
+
+boolean inserirFim(DEQUE *d, REGISTRO reg)
+{
+  PONT novo = (PONT)malloc(sizeof(ELEMENTO));
+  if (!novo)
+    return false;
+  novo->reg = reg;
+  novo->prox = d->cabeca;
+  novo->ant = d->cabeca->ant;
+  d->cabeca->ant = novo;
+  novo->ant->prox = novo;
+  return true;
 }

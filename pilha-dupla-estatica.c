@@ -23,6 +23,7 @@ typedef struct
 } PILHADUPLA;
 
 void inicializarPilhaDupla(PILHADUPLA *p);
+int tamanhoPilhaDupla(PILHADUPLA *p);
 
 int main()
 {
@@ -34,4 +35,9 @@ void inicializarPilhaDupla(PILHADUPLA *p)
 {
   p->topo1 = -1;
   p->topo2 = MAX;
+}
+
+int tamanhoPilhaDupla(PILHADUPLA *p)
+{
+  return (p->topo1 + 1) + (MAX - p->topo2);
 }

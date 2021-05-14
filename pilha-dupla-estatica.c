@@ -10,6 +10,12 @@ typedef enum
   true = 1
 } boolean;
 
+typedef enum
+{
+  pilha1 = 0,
+  pilha2 = 1
+} TIPOPILHA;
+
 typedef struct
 {
   TIPOCHAVE chave;
@@ -24,6 +30,7 @@ typedef struct
 
 void inicializarPilhaDupla(PILHADUPLA *p);
 int tamanhoPilhaDupla(PILHADUPLA *p);
+void exibirPilha(PILHADUPLA *p, TIPOPILHA tipo);
 
 int main()
 {
@@ -40,4 +47,17 @@ void inicializarPilhaDupla(PILHADUPLA *p)
 int tamanhoPilhaDupla(PILHADUPLA *p)
 {
   return (p->topo1 + 1) + (MAX - p->topo2);
+}
+
+void exibirPilha(PILHADUPLA *p, TIPOPILHA tipo)
+{
+  printf("PILHA: %d \" ", tipo);
+  int i;
+
+  if (tipo == pilha1)
+    for (i = p->topo1; i >= 0; i--)
+      printf("%d ", p->A[i].chave);
+  else
+    for (i = p->topo2; i < MAX; i++)
+      printf("%d ", p->A[i].chave);
 }

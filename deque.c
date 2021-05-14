@@ -24,6 +24,7 @@ void inicializarDeque(DEQUE *d);
 int tamanho(DEQUE *d);
 int tamanho2(DEQUE *d);
 void exibirDequeInicio(DEQUE *d);
+void exibirDequeFim(DEQUE *d);
 
 int main()
 {
@@ -73,6 +74,18 @@ void exibirDequeInicio(DEQUE *d)
   {
     printf("%d ", end->reg.chave);
     end = end->prox;
+  }
+  printf("\"\n");
+}
+
+void exibirDequeFim(DEQUE *d)
+{
+  PONT end = d->cabeca->ant;
+  printf("Deque partindo do fim: \" ");
+  while (end != d->cabeca)
+  {
+    printf("%d ", end->reg.chave);
+    end = end->ant;
   }
   printf("\"\n");
 }

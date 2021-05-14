@@ -30,6 +30,7 @@ typedef struct
 void inicializarPilga(PILHA *p);
 int tamanho(PILHA *p);
 boolean estaVazia(PILHA *p);
+void exibirPilha(PILHA *p);
 
 int main()
 {
@@ -57,4 +58,16 @@ int tamanho(PILHA *p)
 boolean estaVazia(PILHA *p)
 {
   return p->topo == NULL;
+}
+
+void exibirPilha(PILHA *p)
+{
+  PONT end = p->topo;
+  printf("Pilha: \" ");
+  while (end != NULL)
+  {
+    printf("%d ", end->reg.chave);
+    end = end->prox;
+  }
+  printf("\"\n");
 }

@@ -23,7 +23,7 @@ typedef struct
 
 void inicializarMatriz(MATRIZ *m, int lin, int col);
 boolean atribuirMatriz(MATRIZ *m, int lin, int col, float val);
-
+float valorMatriz(MATRIZ *m, int lin, int col);
 int main()
 {
 
@@ -79,4 +79,16 @@ boolean atribuirMatriz(MATRIZ *m, int lin, int col, float val)
       ant->prox = novo;
   }
   return true;
+}
+
+float valorMatriz(MATRIZ *m, int lin, int col)
+{
+  if (lin < 0 || lin >= m->linhas || col < 0 || col >= m->colunas)
+    return false;
+  PONT atual = m->A[lin];
+  while (atual != NULL && atual->coluna < col)
+    atual = atual->prox;
+  if (atual != NULL && atual->coluna == col)
+    return atual->valor;
+  return 0;
 }

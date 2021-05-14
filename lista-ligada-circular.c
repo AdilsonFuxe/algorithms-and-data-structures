@@ -31,6 +31,7 @@ void inicializarLista(LISTA *l);
 int tamanho(LISTA *l);
 void exibirLista(LISTA *l);
 PONT buscanSentinela(LISTA *l, TIPOCHAVE ch);
+PONT buscanSentinelaOrd(LISTA *l, TIPOCHAVE ch);
 
 int main()
 {
@@ -74,6 +75,17 @@ PONT buscanSentinela(LISTA *l, TIPOCHAVE ch)
   while (pos->reg.chave != ch)
     pos = pos->prox;
   if (pos != l->cabeca)
+    return pos;
+  return NULL;
+}
+
+PONT buscanSentinelaOrd(LISTA *l, TIPOCHAVE ch)
+{
+  PONT pos = l->cabeca->prox;
+  l->cabeca->reg.chave = ch;
+  while (pos->reg.chave < ch)
+    pos = pos->prox;
+  if (pos != l->cabeca && pos->reg.chave == ch)
     return pos;
   return NULL;
 }

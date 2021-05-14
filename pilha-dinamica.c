@@ -33,6 +33,7 @@ boolean estaVazia(PILHA *p);
 void exibirPilha(PILHA *p);
 boolean inserirElemPilha(PILHA *p, REGISTRO reg);
 boolean excluirElemPilha(PILHA *p);
+void reinicializarPilha(PILHA *p);
 
 int main()
 {
@@ -90,4 +91,17 @@ boolean excluirElemPilha(PILHA *p)
   PONT apagar = p->topo;
   p->topo = p->topo->prox;
   free(apagar);
+}
+
+void reinicializarPilha(PILHA *p)
+{
+  PONT end = p->topo;
+
+  while (end != NULL)
+  {
+    PONT aux = end;
+    end = end->prox;
+    free(aux);
+  }
+  p->topo = NULL;
 }

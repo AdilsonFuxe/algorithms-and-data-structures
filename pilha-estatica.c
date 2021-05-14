@@ -22,6 +22,7 @@ typedef struct
 
 void inicializarPilha(PILHA *p);
 int tamanho(PILHA *p);
+void exibir(PILHA *p);
 
 int main()
 {
@@ -37,4 +38,15 @@ void inicializarPilha(PILHA *p)
 int tamanho(PILHA *p)
 {
   return p->topo + 1;
+}
+
+void exibir(PILHA *p)
+{
+  printf("Pilha: \" ");
+  int i;
+  for (i = p->topo; i >= 0; i--)
+  {
+    printf("%d ", p->A[i]);
+  }
+  printf("\"\n");
 }

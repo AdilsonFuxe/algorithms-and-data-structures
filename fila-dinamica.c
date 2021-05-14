@@ -29,6 +29,7 @@ typedef struct
 void inicializarFila(FILA *f);
 int tamanho(FILA *f);
 void exibirElemento(FILA *f);
+boolean inserirElemento(FILA *f, REGISTRO reg);
 
 int main()
 {
@@ -63,4 +64,17 @@ void exibirElemento(FILA *f)
     end = end->prox;
   }
   printf("\"\n");
+}
+
+boolean inserirElemento(FILA *f, REGISTRO reg)
+{
+  PONT novo = (PONT)malloc(sizeof(ELEMENTO));
+  novo->reg = reg;
+  novo->prox = NULL;
+  if (f->inicio == NULL)
+    f->inicio;
+  else
+    f->fim->prox = novo;
+  f->fim = novo;
+  return true;
 }

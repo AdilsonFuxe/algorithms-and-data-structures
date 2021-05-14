@@ -27,6 +27,7 @@ typedef struct
 } FILA;
 
 void inicializarFila(FILA *f);
+int tamanho(FILA *f);
 
 int main()
 {
@@ -38,4 +39,16 @@ void inicializarFila(FILA *f)
 {
   f->inicio = NULL;
   f->fim = NULL;
+}
+
+int tamanho(FILA *f)
+{
+  PONT end = f->inicio;
+  int tam = 0;
+  while (end != NULL)
+  {
+    tam++;
+    end = end->prox;
+  }
+  return tam;
 }

@@ -78,4 +78,5 @@ boolean inserirElementoPilha(PILHADUPLA *p, REGISTRO reg, TIPOPILHA tipo)
     p->topo2 = p->topo2 - 1;
     p->A[p->topo2] = reg;
   }
+  return true;
 }

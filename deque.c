@@ -21,6 +21,7 @@ typedef struct
 } DEQUE;
 
 void inicializarDeque(DEQUE *d);
+int tamanho(DEQUE *d);
 
 int main()
 {
@@ -33,4 +34,18 @@ void inicializarDeque(DEQUE *d)
   d->cabeca = (PONT)malloc(sizeof(ELEMENTO));
   d->cabeca->prox = d->cabeca;
   d->cabeca->ant = d->cabeca;
+}
+
+int tamanho(DEQUE *d)
+{
+  PONT end = d->cabeca->prox;
+  int tam = 0;
+
+  while (end != d->cabeca)
+  {
+    tam++;
+    end = end->prox;
+  }
+
+  return tam;
 }

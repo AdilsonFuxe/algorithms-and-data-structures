@@ -32,6 +32,7 @@ int tamanho2(DEQUE *d);
 void exibirDequeInicio(DEQUE *d);
 void exibirDequeFim(DEQUE *d);
 boolean inserirFim(DEQUE *d, REGISTRO reg);
+boolean excluirElemDequeInicio(DEQUE *d);
 
 int main()
 {
@@ -107,5 +108,16 @@ boolean inserirFim(DEQUE *d, REGISTRO reg)
   novo->ant = d->cabeca->ant;
   d->cabeca->ant = novo;
   novo->ant->prox = novo;
+  return true;
+}
+
+boolean excluirElemDequeInicio(DEQUE *d)
+{
+  if (d->cabeca->prox == d->cabeca)
+    return false;
+  PONT apagar = d->cabeca->prox;
+  d->cabeca->prox = apagar->prox;
+  apagar->prox->ant = d->cabeca;
+  free(apagar);
   return true;
 }

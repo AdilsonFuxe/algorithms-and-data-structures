@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+#define MAX 50
+
+typedef int TIPOCHAVE;
+
+typedef enum
+{
+  false = 0,
+  true = 1
+} boolean;
+
+typedef struct
+{
+  TIPOCHAVE chave;
+} REGISTRO;
+
+typedef struct
+{
+  REGISTRO A[MAX];
+  int inicio;
+  int nroElem;
+} FILA;
+
+void inicializarFIla(FILA *f);
+
+int main()
+{
+
+  return 0;
+}
+
+void inicializarFIla(FILA *f)
+{
+  f->inicio = 0;
+  f->nroElem = 0;
+}

@@ -20,8 +20,15 @@ typedef struct
   int topo;
 } PILHA;
 
+void inicializarPilha(PILHA *p);
+
 int main()
 {
 
   return 0;
+}
+
+void inicializarPilha(PILHA *p)
+{
+  p->topo = -1;
 }

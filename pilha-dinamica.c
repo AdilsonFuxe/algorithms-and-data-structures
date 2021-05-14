@@ -29,6 +29,7 @@ typedef struct
 
 void inicializarPilga(PILHA *p);
 int tamanho(PILHA *p);
+boolean estaVazia(PILHA *p);
 
 int main()
 {
@@ -51,4 +52,9 @@ int tamanho(PILHA *p)
     end = end->prox;
   }
   return tam;
+}
+
+boolean estaVazia(PILHA *p)
+{
+  return p->topo == NULL;
 }

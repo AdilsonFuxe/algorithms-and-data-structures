@@ -22,8 +22,16 @@ typedef struct
   int topo2;
 } PILHADUPLA;
 
+void inicializarPilhaDupla(PILHADUPLA *p);
+
 int main()
 {
 
   return 0;
+}
+
+void inicializarPilhaDupla(PILHADUPLA *p)
+{
+  p->topo1 = -1;
+  p->topo2 = MAX;
 }

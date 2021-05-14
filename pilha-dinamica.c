@@ -32,6 +32,7 @@ int tamanho(PILHA *p);
 boolean estaVazia(PILHA *p);
 void exibirPilha(PILHA *p);
 boolean inserirElemPilha(PILHA *p, REGISTRO reg);
+boolean excluirElemPilha(PILHA *p);
 
 int main()
 {
@@ -80,4 +81,13 @@ boolean inserirElemPilha(PILHA *p, REGISTRO reg)
   novo->prox = p->topo;
   p->topo = novo;
   return true;
+}
+
+boolean excluirElemPilha(PILHA *p)
+{
+  if (p->topo == NULL)
+    return false;
+  PONT apagar = p->topo;
+  p->topo = p->topo->prox;
+  free(apagar);
 }

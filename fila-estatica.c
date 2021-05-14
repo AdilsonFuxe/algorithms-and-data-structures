@@ -23,6 +23,7 @@ typedef struct
 } FILA;
 
 void inicializarFIla(FILA *f);
+int tamanho(FILA *f);
 
 int main()
 {
@@ -34,4 +35,9 @@ void inicializarFIla(FILA *f)
 {
   f->inicio = 0;
   f->nroElem = 0;
+}
+
+int tamanho(FILA *f)
+{
+  return f->nroElem;
 }

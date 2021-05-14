@@ -31,6 +31,7 @@ void inicializarPilga(PILHA *p);
 int tamanho(PILHA *p);
 boolean estaVazia(PILHA *p);
 void exibirPilha(PILHA *p);
+boolean inserirElemPilha(PILHA *p, REGISTRO reg);
 
 int main()
 {
@@ -70,4 +71,13 @@ void exibirPilha(PILHA *p)
     end = end->prox;
   }
   printf("\"\n");
+}
+
+boolean inserirElemPilha(PILHA *p, REGISTRO reg)
+{
+  PONT novo = (PONT)malloc(sizeof(ELEMENTO));
+  novo->reg = reg;
+  novo->prox = p->topo;
+  p->topo = novo;
+  return true;
 }

@@ -25,6 +25,7 @@ int tamanho(PILHA *p);
 void exibir(PILHA *p);
 boolean push(PILHA *p, REGISTRO reg);
 boolean pop(PILHA *p);
+void reinicializarPilha(PILHA *p);
 
 int main()
 {
@@ -68,4 +69,9 @@ boolean pop(PILHA *p)
     return false;
   p->topo = p->topo - 1;
   return true;
+}
+
+void reinicializarPilha(PILHA *p)
+{
+  p->topo = -1;
 }

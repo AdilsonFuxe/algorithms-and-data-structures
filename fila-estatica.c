@@ -24,6 +24,7 @@ typedef struct
 
 void inicializarFIla(FILA *f);
 int tamanho(FILA *f);
+void exibirFila(FILA *f);
 
 int main()
 {
@@ -40,4 +41,18 @@ void inicializarFIla(FILA *f)
 int tamanho(FILA *f)
 {
   return f->nroElem;
+}
+
+void exibirFila(FILA *f)
+{
+  printf("Fila \" ");
+  int i = f->inicio;
+  int temp;
+
+  for (temp = 0; temp < f->nroElem; temp++)
+  {
+    printf("%d ", f->A[i].chave);
+    i = (i + 1) % MAX;
+  }
+  printf("\"\n");
 }

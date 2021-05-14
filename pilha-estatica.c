@@ -21,6 +21,7 @@ typedef struct
 } PILHA;
 
 void inicializarPilha(PILHA *p);
+int tamanho(PILHA *p);
 
 int main()
 {
@@ -31,4 +32,9 @@ int main()
 void inicializarPilha(PILHA *p)
 {
   p->topo = -1;
+}
+
+int tamanho(PILHA *p)
+{
+  return p->topo + 1;
 }

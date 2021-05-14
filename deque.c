@@ -23,6 +23,7 @@ typedef struct
 void inicializarDeque(DEQUE *d);
 int tamanho(DEQUE *d);
 int tamanho2(DEQUE *d);
+void exibirDequeInicio(DEQUE *d);
 
 int main()
 {
@@ -62,4 +63,16 @@ int tamanho2(DEQUE *d)
   }
 
   return tam;
+}
+
+void exibirDequeInicio(DEQUE *d)
+{
+  PONT end = d->cabeca->prox;
+  printf("Deque partindo do inicio: \" ");
+  while (end != d->cabeca)
+  {
+    printf("%d ", end->reg.chave);
+    end = end->prox;
+  }
+  printf("\"\n");
 }

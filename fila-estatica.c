@@ -25,6 +25,7 @@ typedef struct
 void inicializarFIla(FILA *f);
 int tamanho(FILA *f);
 void exibirFila(FILA *f);
+boolean inserirElemntoFIla(FILA *f, REGISTRO reg);
 
 int main()
 {
@@ -55,4 +56,14 @@ void exibirFila(FILA *f)
     i = (i + 1) % MAX;
   }
   printf("\"\n");
+}
+
+boolean inserirElemntoFIla(FILA *f, REGISTRO reg)
+{
+  if (f->nroElem >= MAX)
+    return false;
+  int pos = (f->inicio + f->nroElem) % MAX;
+  f->A[pos] = reg;
+  f->nroElem++;
+  return true;
 }

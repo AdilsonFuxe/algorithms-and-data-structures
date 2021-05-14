@@ -28,6 +28,7 @@ typedef struct
 } LISTA;
 
 void inicializarLista(LISTA *l);
+int tamanho(LISTA *l);
 
 int main()
 {
@@ -38,4 +39,16 @@ void inicializarLista(LISTA *l)
 {
   l->cabeca = (PONT)malloc(sizeof(ELEMENTO));
   l->cabeca->prox = l->cabeca;
+}
+
+int tamanho(LISTA *l)
+{
+  PONT end = l->cabeca->prox;
+  int tam = 0;
+  while (end != l->cabeca)
+  {
+    tam++;
+    end = end->prox;
+  }
+  return tam;
 }

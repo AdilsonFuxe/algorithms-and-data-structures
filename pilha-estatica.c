@@ -23,6 +23,7 @@ typedef struct
 void inicializarPilha(PILHA *p);
 int tamanho(PILHA *p);
 void exibir(PILHA *p);
+boolean push(PILHA *p, REGISTRO reg);
 
 int main()
 {
@@ -49,4 +50,13 @@ void exibir(PILHA *p)
     printf("%d ", p->A[i]);
   }
   printf("\"\n");
+}
+
+boolean push(PILHA *p, REGISTRO reg)
+{
+  if (p->topo >= MAX - 1)
+    return false;
+  p->topo = p->topo + 1;
+  p->A[p->topo] = reg;
+  return true;
 }

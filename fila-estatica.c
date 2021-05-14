@@ -26,7 +26,7 @@ void inicializarFIla(FILA *f);
 int tamanho(FILA *f);
 void exibirFila(FILA *f);
 boolean inserirElemntoFIla(FILA *f, REGISTRO reg);
-
+boolean excluirElementoFila(FILA *f);
 int main()
 {
 
@@ -65,5 +65,14 @@ boolean inserirElemntoFIla(FILA *f, REGISTRO reg)
   int pos = (f->inicio + f->nroElem) % MAX;
   f->A[pos] = reg;
   f->nroElem++;
+  return true;
+}
+
+boolean excluirElementoFila(FILA *f)
+{
+  if (f->nroElem == 0)
+    return false;
+  f->inicio = (f->inicio + 1) % MAX;
+  f->nroElem--;
   return true;
 }

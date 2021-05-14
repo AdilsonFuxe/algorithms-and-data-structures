@@ -28,6 +28,7 @@ typedef struct
 } PILHA;
 
 void inicializarPilga(PILHA *p);
+int tamanho(PILHA *p);
 
 int main()
 {
@@ -38,4 +39,16 @@ int main()
 void inicializarPilga(PILHA *p)
 {
   p->topo = NULL;
+}
+
+int tamanho(PILHA *p)
+{
+  PONT end = p->topo;
+  int tam = 0;
+  while (end != NULL)
+  {
+    tam++;
+    end = end->prox;
+  }
+  return tam;
 }

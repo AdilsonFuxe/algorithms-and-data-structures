@@ -26,9 +26,26 @@ void exibir(PILHA *p);
 boolean push(PILHA *p, REGISTRO reg);
 boolean pop(PILHA *p);
 void reinicializarPilha(PILHA *p);
+boolean removerPos(PILHA *p, int chave);
 
 int main()
 {
+  PILHA p;
+  inicializarPilha(&p);
+  REGISTRO r1, r2, r3, r4;
+
+  r1.chave = 1;
+  r2.chave = 10;
+  r3.chave = 14;
+  r4.chave = 11;
+  push(&p, r1);
+  push(&p, r2);
+  push(&p, r3);
+  push(&p, r4);
+
+  exibir(&p);
+  removerPos(&p, 14);
+  exibir(&p);
 
   return 0;
 }
@@ -49,7 +66,7 @@ void exibir(PILHA *p)
   int i;
   for (i = p->topo; i >= 0; i--)
   {
-    printf("%d ", p->A[i]);
+    printf("%d ", p->A[i].chave);
   }
   printf("\"\n");
 }
@@ -74,4 +91,29 @@ boolean pop(PILHA *p)
 void reinicializarPilha(PILHA *p)
 {
   p->topo = -1;
+}
+
+boolean removerPos(PILHA *p, int chave)
+{
+  PILHA aux;
+  inicializarPilha(&aux);
+
+  while (tamanho(p) > 0 && p->A[p->topo].chave != chave)
+  {
+    push(&aux, p->A[p->topo]);
+    pop(p);
+  }
+
+  if (tamanho(p) > 0)
+  {
+    pop(p);
+  }
+
+  while (tamanho(&aux) > 0)
+  {
+    push(p, aux.A[aux.topo]);
+    pop(&aux);
+  }
+
+  return true;
 }
